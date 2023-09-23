@@ -1,0 +1,14 @@
+SELECT
+    b.BOARD_ID,
+    b.WRITER_ID,
+    b.TITLE,
+    b.PRICE,
+    CASE WHEN STATUS = 'SALE' THEN '판매중'
+         WHEN STATUS = 'RESERVED' THEN '예약중'
+         ELSE '거래완료'
+         END AS STATUS
+FROM
+    USED_GOODS_BOARD AS b
+WHERE
+    b.CREATED_DATE LIKE '2022-10-05'
+ORDER BY b.BOARD_ID DESC
