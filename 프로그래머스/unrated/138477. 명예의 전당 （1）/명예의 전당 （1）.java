@@ -1,27 +1,23 @@
 import java.util.*;
 
 class Solution {
-    public int[] solution(int k, int[] scores) {
-        ArrayList<Integer> arr = new ArrayList<>();
-        
-        int[] stage = new int[k];
-        int pres = Integer.MAX_VALUE;
-        int day = 1;
-        for(int score : scores){
-            if(day <= k){
-                stage[day - 1] = score;
-                pres = Math.min(pres, score);
-            } else{
-                if(score > pres){
-                    Arrays.sort(stage);
-                    stage[0] = score;
-                    Arrays.sort(stage);
-                    pres = stage[0];
+    public int[] solution(int k, int[] score) {
+        // int[] answer = {};
+        ArrayList<Integer> answer = new ArrayList<>();
+        PriorityQueue<Integer> que = new PriorityQueue<>();
+        for(int sc : score){
+            if(que.isEmpty()) que.add(sc);
+            else{
+                if(que.size() < k) que.add(sc);
+                else{
+                    if(que.peek() < sc){
+                        que.poll();
+                        que.add(sc);
+                    }
                 }
             }
-            arr.add(pres);
-            day++;
+            answer.add(que.peek());
         }
-        return arr.stream().mapToInt(i->i).toArray();
+        return answer.stream().mapToInt(i->i).toArray();
     }
 }
