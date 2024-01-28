@@ -15,7 +15,6 @@ class Solution {
             
             // 종료
             for(int j = 0; j < want.length; j++){
-                // System.out.println("구매한 항목 = " + want[j] + " => " + bought.get(want[j]));
                 if( !(bought.getOrDefault(want[j], 0) == number[j]) ){
                     flag = false;
                     break;
