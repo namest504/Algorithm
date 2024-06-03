@@ -1,12 +1,13 @@
 import java.util.*;
 class Solution {
     public String solution(String s) {
-        StringBuilder sb = new StringBuilder();
-        List<Integer> list = new ArrayList<>();
-        for(String str : s.split(" ")){
-            list.add(Integer.parseInt(str));
+        String answer = "";
+        String[] sArr = s.split(" ");
+        int[] arr = new int[sArr.length];
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = Integer.parseInt(sArr[i]);
         }
-        Collections.sort(list);
-        return sb.append(list.get(0)).append(" ").append(list.get(list.size()-1)).toString();
+        Arrays.sort(arr);
+        return arr[0] +" "+ arr[arr.length-1];
     }
 }
