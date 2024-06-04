@@ -1,9 +1,9 @@
 class Solution {
     public long solution(int k, int d) {
         long answer = 0;
-        for(int a = 0; a <= d; a++){
-            if((a*k) > d) break;
-            int b = getB(d, (a*k));
+        for(int a = 0; a <= d; a += k){
+            if(a > d) break;
+            int b = getB(d, a);
             
             answer += (b / k) + 1;
         }
