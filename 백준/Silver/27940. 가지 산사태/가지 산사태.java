@@ -5,32 +5,24 @@ import java.io.OutputStreamWriter;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringBuilder sb = new StringBuilder();
-
-        read();
-        int m = read(), k = read();
-
-        int sum = 0;
-        for (int i = 0; i < m; i++) {
-            read();
-            sum += read();
-
-            if (sum > k) {
-                sb.append(i + 1).append(" 1");
-                break;
-            }
-        }
-
-        bw.write(sb.length() > 0 ? sb.toString() : "-1");
-        bw.flush();
+        public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		
+		st.nextToken();
+		int M = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
+		
+		for (int i = 0; i<M; i++) {
+			st = new StringTokenizer(br.readLine()," ");
+			st.nextToken();
+			K -= Integer.parseInt(st.nextToken());
+			if (K < 0) {
+				System.out.println((i+1)+" "+1);
+				return;
+			}
+		}
+		System.out.println(-1);
     }
-
-    private static int read() throws IOException {
-        int c, n = System.in.read() & 15;
-        while ((c = System.in.read()) > 32) n = (n << 3) + (n << 1) + (c & 15);
-
-        return n;
-    }
-
 }
